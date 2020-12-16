@@ -1,0 +1,6 @@
+{
+    "require": {
+        "slim/slim": "4.*",
+        "respect/relational": "^0.8.1"
+    }
+}
