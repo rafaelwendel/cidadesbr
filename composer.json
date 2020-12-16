@@ -1,6 +1,13 @@
 {
     "require": {
         "slim/slim": "4.*",
-        "respect/relational": "^0.8.1"
+        "slim/psr7": "^1.2",
+        "respect/relational": "^0.8.1"        
+    },    
+    "autoload": {
+        "psr-4": {
+            "CidadesBR\\" : "src/", 
+            "Vendor\\Namespace\\" : ""         
+        }
     }
 }
