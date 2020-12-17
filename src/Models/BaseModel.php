@@ -28,4 +28,20 @@ abstract class BaseModel {
             }
         }
     }
+    
+    protected function formatDataResponse($arrayData)
+    {
+        if(count($arrayData) == 0){
+            return [
+                'code'   => 404,
+                'status' => 'empty data',
+                'data'   => ''
+            ];
+        }
+        return [
+            'code'   => 200,
+            'status' => 'success',
+            'data'   => $arrayData
+        ];
+    }
 }

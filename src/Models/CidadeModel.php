@@ -13,7 +13,7 @@ class CidadeModel extends BaseModel {
     {
         $this->params = $params;
         $this->formatParams();
-        return $this->mapper->cidade[$this->params]->fetchAll();
+        return $this->formatDataResponse($this->mapper->cidade[$this->params]->fetchAll());
     }
 }
 

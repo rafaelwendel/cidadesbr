@@ -13,7 +13,7 @@ class EstadoModel extends BaseModel {
     {
         $this->params = $params;
         $this->formatParams();
-        return $this->mapper->estado[$this->params]->fetchAll();
+        return $this->formatDataResponse($this->mapper->estado[$this->params]->fetchAll());
     }
 }
 

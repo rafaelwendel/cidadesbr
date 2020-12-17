@@ -27,15 +27,10 @@ $errorMiddleware->setErrorHandler(\Slim\Exception\HttpNotFoundException::class, 
 
 //GET "estados"
 $app->get('/estados[/{params:.*}]', function (Request $request, Response $response, $args) {
-    try{
-        $estado = new CidadesBR\Models\EstadoModel(Connection::getConnection());
-        $estados = $estado->getEstados($args['params']);
-        $response->getBody()->write(json_encode($estados));
-        return $response->withHeader('Content-Type', 'application/json');
-    } catch (HttpException $ex) {
-        echo $ex->getMessage();
-    }
-    
+    $estado = new CidadesBR\Models\EstadoModel(Connection::getConnection());
+    $estados = $estado->getEstados($args['params']);
+    $response->getBody()->write(json_encode($estados));
+    return $response->withHeader('Content-Type', 'application/json');
 });
 
 
