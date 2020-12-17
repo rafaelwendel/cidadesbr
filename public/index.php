@@ -33,6 +33,14 @@ $app->get('/estados[/{params:.*}]', function (Request $request, Response $respon
     return $response->withHeader('Content-Type', 'application/json');
 });
 
+//GET "cidades"
+$app->get('/cidades[/{params:.*}]', function (Request $request, Response $response, $args) {
+    $cidade = new CidadesBR\Models\CidadeModel(Connection::getConnection());
+    $cidades = $cidade->getCidades($args['params']);
+    $response->getBody()->write(json_encode($cidades));
+    return $response->withHeader('Content-Type', 'application/json');
+});
+
 
 //Executa
 try {
