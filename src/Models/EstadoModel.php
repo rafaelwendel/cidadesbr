@@ -2,17 +2,18 @@
 
 namespace CidadesBR\Models;
 
-class EstadoModel {
-    private $mapper = null;
+class EstadoModel extends BaseModel {
     
     public function __construct(\Respect\Relational\Mapper $mapper) 
     {
-        $this->mapper = $mapper;
+        parent::__construct($mapper);
     }
     
-    public function getEstados($conds = [])
+    public function getEstados($params = [])
     {
-        return $this->mapper->estado[$conds]->fetchAll();
+        $this->params = $params;
+        $this->formatParams();
+        return $this->mapper->estado[$this->params]->fetchAll();
     }
 }
 

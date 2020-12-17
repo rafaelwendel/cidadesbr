@@ -29,7 +29,7 @@ $errorMiddleware->setErrorHandler(\Slim\Exception\HttpNotFoundException::class, 
 $app->get('/estados[/{params:.*}]', function (Request $request, Response $response, $args) {
     try{
         $estado = new CidadesBR\Models\EstadoModel(Connection::getConnection());
-        $estados = $estado->getEstados();
+        $estados = $estado->getEstados($args['params']);
         $response->getBody()->write(json_encode($estados));
         return $response->withHeader('Content-Type', 'application/json');
     } catch (HttpException $ex) {
