@@ -4,6 +4,8 @@ namespace CidadesBR\Models;
 
 class EstadoModel extends BaseModel {
     
+    protected $fields = ['coduf', 'sigla', 'nome', 'capital', 'numeromunicipios', 'regiao'];
+    
     public function __construct(\Respect\Relational\Mapper $mapper) 
     {
         parent::__construct($mapper);
@@ -13,7 +15,9 @@ class EstadoModel extends BaseModel {
     {
         $this->params = $params;
         $this->formatParams();
-        return $this->formatDataResponse($this->mapper->estado[$this->params]->fetchAll());
+        return $this->formatDataResponse(
+            $this->mapper->estado[$this->params]->fetchAll($this->addExtras())
+        );
     }
 }
 
